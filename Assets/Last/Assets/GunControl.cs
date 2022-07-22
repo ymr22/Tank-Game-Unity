@@ -24,7 +24,9 @@ public class GunControl : MonoBehaviour
         // Copy the ray's direction
         Vector3 mouseDirection = ray.direction;
         // Constraint it to stay in the X/Z plane
-        mouseDirection.y = 0;
+        
+        mouseDirection.x = 0f;
+        mouseDirection.z = 0f;
         //Look for the constraint direction
         Quaternion targetRotation = Quaternion.LookRotation(mouseDirection);
  
@@ -41,7 +43,7 @@ public class GunControl : MonoBehaviour
             if (angularDifference > 0) transform.rotation = Quaternion.Slerp(
                 currentRotation,
                 targetRotation,
-                (rotationSpeed * 180 * Time.deltaTime) / angularDifference
+                (rotationSpeed * 180 * Time.deltaTime) / (angularDifference)
             );
             else transform.rotation = targetRotation;
         }
