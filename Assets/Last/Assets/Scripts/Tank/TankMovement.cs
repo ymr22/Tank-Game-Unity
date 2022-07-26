@@ -51,14 +51,9 @@ public class TankMovement : MonoBehaviour
     private void Update()
     {
 
-        // Store the player's input and make sure the audio for the engine is playing.
-
-        
         m_MovementInputValue = Input.GetAxis (m_MovementAxisName);
         m_TurnInputValue = Input.GetAxis (m_TurnAxisName);
-        //m_Rigidbody.AddRelativeForce(0, 0, 1f, ForceMode.Acceleration);
         
-       
         
         EngineAudio ();
         
@@ -118,10 +113,8 @@ public class TankMovement : MonoBehaviour
             m_Rigidbody.AddForce(movement * 5, ForceMode.Force);
         }
 
-        Debug.Log(m_Rigidbody.velocity.magnitude);
         // m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
     }
-
 
     private void Turn()
     { 
@@ -136,8 +129,8 @@ public class TankMovement : MonoBehaviour
             turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime * (-1) ;
         }
       
-
         Quaternion turnRotation = Quaternion.Euler(0f,turn,0f);
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
+
 }

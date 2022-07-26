@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     [Tooltip("If rotationSpeed == 0.5, then it takes 2 seconds to spin 180 degrees")]
     [SerializeField] [Range(0, 10)] float rotationSpeed = 0.5f;
  
@@ -12,7 +13,7 @@ public class GunControl : MonoBehaviour
     [SerializeField] bool isInstant = false;
  
     Camera _camera = null;  // cached because Camera.main is slow, so we only call it once.
- 
+
     void Start()
     {
         _camera = Camera.main;
@@ -21,11 +22,12 @@ public class GunControl : MonoBehaviour
     void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        // Copy the ray's direction
+       
         Vector3 mouseDirection = ray.direction;
-        // Constraint it to stay in the X/Z plane
-        mouseDirection.y = 0;
-        //Look for the constraint direction
+       
+        mouseDirection.y += 0.5f;
+       
+      
         Quaternion targetRotation = Quaternion.LookRotation(mouseDirection);
  
         if (isInstant)

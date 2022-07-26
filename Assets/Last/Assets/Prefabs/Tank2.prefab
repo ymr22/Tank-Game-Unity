@@ -129,7 +129,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191735111291133430}
   serializedVersion: 2
-  m_Mass: 175
+  m_Mass: 46.27
   m_Drag: 3
   m_AngularDrag: 3
   m_UseGravity: 1
@@ -1253,6 +1253,7 @@ GameObject:
   - component: {fileID: 2212654794247621689}
   - component: {fileID: 3057557580394710530}
   - component: {fileID: 6436730641109129575}
+  - component: {fileID: 8244176696425765285}
   m_Layer: 0
   m_Name: Cromwell_IV_Gun
   m_TagString: Untagged
@@ -1326,6 +1327,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8244176696425765285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310663104975452244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24fbd077de0ee14091d5c4ecc6e7ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.5
+  isInstant: 0
 --- !u!1 &2358724768373901122
 GameObject:
   m_ObjectHideFlags: 0
