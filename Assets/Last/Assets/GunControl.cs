@@ -25,8 +25,8 @@ public class GunControl : MonoBehaviour
         Vector3 mouseDirection = ray.direction;
         // Constraint it to stay in the X/Z plane
         
-        mouseDirection.x = 0f;
-        mouseDirection.z = 0f;
+        mouseDirection.y += 0.5f;
+        
         //Look for the constraint direction
         Quaternion targetRotation = Quaternion.LookRotation(mouseDirection);
  

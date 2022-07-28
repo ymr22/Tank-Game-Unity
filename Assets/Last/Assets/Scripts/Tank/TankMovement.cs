@@ -16,9 +16,10 @@ public class TankMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;         
     private float m_MovementInputValue;    
     private float m_TurnInputValue;        
-    private float m_OriginalPitch;         
+    private float m_OriginalPitch;
 
-
+    public float forceMovementConstant;
+    public float forceRotationConstant;
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -48,17 +49,6 @@ public class TankMovement : MonoBehaviour
     }
     
 
-    private void Update()
-    {
-        // Store the player's input and make sure the audio for the engine is playing.
-        
-        m_MovementInputValue = Input.GetAxis (m_MovementAxisName);
-        m_TurnInputValue = Input.GetAxis (m_TurnAxisName);
-        //m_Rigidbody.AddRelativeForce(0, 0, 1f, ForceMode.Acceleration);
-
-        EngineAudio ();
-    }
-
 
     private void EngineAudio()
     {
@@ -87,8 +77,16 @@ public class TankMovement : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
+        // Store the player's input and make sure the audio for the engine is playing.
+        
+        m_MovementInputValue = Input.GetAxis (m_MovementAxisName);
+        m_TurnInputValue = Input.GetAxis (m_TurnAxisName);
+        //m_Rigidbody.AddRelativeForce(0, 0, 1f, ForceMode.Acceleration);
+
+        EngineAudio ();
+        
         // Move and turn the tank.
         Move();
         Turn();
@@ -104,12 +102,12 @@ public class TankMovement : MonoBehaviour
         }
         else if (Input.GetAxis((m_MovementAxisName)) <= 0)
         {
-            movement = transform.forward * m_MovementInputValue * (m_Speed / 3) ;
+            movement = transform.forward * m_MovementInputValue * (m_Speed / 5) * 2 ;
         }
 
         if (Input.GetButton (m_MovementAxisName))
         {
-            m_Rigidbody.AddForce(movement * 5, ForceMode.Force);
+            m_Rigidbody.AddForce(movement * forceMovementConstant, ForceMode.Force);
         }
         // m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
     }
@@ -128,7 +126,7 @@ public class TankMovement : MonoBehaviour
             turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime * (-1) ;
         }
         
-        Quaternion turnRotation = Quaternion.Euler(0f,turn,0f);
+        Quaternion turnRotation = Quaternion.Euler(0f,turn * forceRotationConstant,0f);
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
 }
