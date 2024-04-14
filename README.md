@@ -1,6 +1,6 @@
 # Tank Game
 
-Tank Game is a simple and fun Unity game that simulates an intense online battle between two tanks.
+Tank Game is a simple and fun Unity game that simulates an intense battle between two tanks.
 
 ## Purpose
 
